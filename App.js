@@ -134,19 +134,37 @@ export default function App() {
 
             <View style={{ justifyContent: "center", alignItems: "center" }}>
               <EvilIcons name="star" size={30} color="white" />
-              <Text style={{ color: "white", paddingTop: 10 }}>RATE THIS</Text>
+              <Text
+                style={{ color: "white", paddingTop: 10, fontWeight: "bold" }}
+              >
+                RATE THIS
+              </Text>
             </View>
 
             <View>
-              <Text
+              <View
                 style={{
-                  textAlign: "center",
-                  color: "white",
-                  backgroundColor: "green",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
                 }}
               >
-                74
-              </Text>
+                <Text
+                  style={{
+                    display: "flex",
+                    textAlign: "center",
+                    justifyContent: "center",
+                    color: "white",
+                    backgroundColor: "green",
+                    height: 22,
+                    width: 22,
+                    marginBottom: 5,
+                  }}
+                >
+                  74
+                </Text>
+              </View>
+
               <Text
                 style={{
                   fontSize: 14,
