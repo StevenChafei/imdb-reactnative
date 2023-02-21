@@ -8,17 +8,28 @@ import {
   ScrollView,
   TouchableOpacity,
   onPress,
+  Platform,
 } from "react-native";
 
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { EvilIcons } from "@expo/vector-icons";
 
+import Constants from "expo-constants";
+
 export default function App() {
   return (
-    <SafeAreaView>
+    <SafeAreaView
+      style={{
+        backgroundColor: "black",
+        marginTop: Platform.OS === "android" ? Constants.statusBarHeight : 10,
+      }}
+    >
+      <StatusBar style="light" />
       <ScrollView>
         <View style={{ backgroundColor: "#212121" }}>
-          <View style={styles.test}>
+          {/* HEADER */}
+
+          <View style={styles.header}>
             <Image
               source={require("./assets/logo-imdb.png")}
               style={styles.logo}
@@ -41,7 +52,7 @@ export default function App() {
           </View>
 
           {/* ------------ IMAGES / TEXTE / BUTTON --------------*/}
-          <View>
+          {/* <View>
             <View
               style={{
                 display: "flex",
@@ -95,6 +106,22 @@ export default function App() {
                 />
               </View>
             </View>
+          </View> */}
+
+          <View style={styles.coverView}>
+            <Image
+              style={styles.coverImg}
+              source={require("./assets/image-film.jpeg")}
+            />
+          </View>
+          <View style={styles.coverText}>
+            <Text style={{ color: "white" }}>
+              A team of explorers travel through a wormhole in space in an
+              attempt to ensure humanity's survival.
+            </Text>
+            <TouchableOpacity style={styles.coverBtn}>
+              <Text style={styles.coverBtnText}>+ ADD TO WATCHLIST</Text>
+            </TouchableOpacity>
           </View>
 
           {/* ------------ NOTES --------------*/}
@@ -367,16 +394,16 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  firstblock: {
-    backgroundColor: "212121",
-    fontSize: 32,
+  header: {
+    backgroundColor: "#393939",
+    height: 60,
+    justifyContent: "center",
   },
 
   logo: {
-    marginTop: 20,
-    height: 40,
-    width: 80,
+    width: 40,
     marginLeft: 10,
+    width: 100,
     color: "white",
   },
 
@@ -385,5 +412,35 @@ const styles = StyleSheet.create({
     backgroundColor: "212121",
     alignItems: "center",
     justifyContent: "center",
+  },
+
+  coverView: {
+    flexDirection: "row",
+    paddingHorizontal: 10,
+    marginVertical: 20,
+  },
+  coverImg: {
+    height: 200,
+    width: 150,
+    resizeMode: "contain",
+  },
+  coverText: {
+    marginLeft: 10,
+    flex: 1,
+  },
+  coverBtn: {
+    backgroundColor: "#5798EE",
+    height: 40,
+
+    alignItems: "center",
+    justifyContent: "center ",
+    marginHorizontal: 20,
+    borderRadius: 10,
+    marginTop: 10,
+  },
+  coverBtnText: {
+    color: "white",
+
+    textTranform: "uppercase",
   },
 });
